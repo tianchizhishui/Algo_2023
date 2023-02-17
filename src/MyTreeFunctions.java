@@ -68,5 +68,11 @@ public class MyTreeFunctions {
         return left == null ? right : left;
     }
 
+    // functions to find the longest path from node to leaf
+    public int longestPath(MyTreeNodes root) {
+
+        return 0;
+    }
+
 
 }

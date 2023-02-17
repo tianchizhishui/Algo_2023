@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class MyListFunctions {
-    /* this class is designed for common List functions including: 1.reverse list */
+    /* this class is designed for common List functions including: 1.reverse list, iterative way and recursive way */
 
     public MyListNodes reverseI(MyListNodes head) {
         if (head == null || head.next == null) return head;
