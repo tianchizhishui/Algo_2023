@@ -55,8 +55,8 @@ public class MyTreeFunctions {
 
     // LCA basic version: find the lowest common ancester of two given nodes
 
-    public MyTreeNodes findLCA(MyTreeNodes root, int p, int q) {
-        if (root == null || root.value == p || root.value == q) return root;
+    public MyTreeNodes findLCA(MyTreeNodes root, MyTreeNodes p, MyTreeNodes q) {
+        if (root == null || root == p || root == q) return root;
 
         MyTreeNodes left = findLCA(root.left, p, q);
         MyTreeNodes right = findLCA(root.right, p, q);
@@ -68,11 +68,38 @@ public class MyTreeFunctions {
         return left == null ? right : left;
     }
 
+    // LCA with parents
+    public MyTreeNodes findLcaWithParent(MyTreeNodes p, MyTreeNodes q) {
+        //move p to root and record the path
+        //then move q to root and check each step in the set
+        //LCA will be the first same node p and q share.
+        Set<MyTreeNodes> path = new HashSet<>();
+        while (p != null) {
+            path.add(p);
+            p = p.parent;
+        }
+
+        // move q while check the set
+        while (q != null) {
+            if (path.contains(q)) {
+                return q;
+            }
+            q = q.parent;
+        }
+        return null;
+
+    }
+
+    // LCA2 with no parent node
+    public MyTreeNodes findLcaInOneTree(MyTreeNodes root, MyTreeNodes p, MyTreeNodes q) {
+        return root;
+
+    }
+
     // functions to find the longest path from node to leaf
     public int longestPath(MyTreeNodes root) {
 
         return 0;
     }
-
 
 }
