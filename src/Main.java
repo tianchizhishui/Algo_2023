@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -50,10 +52,13 @@ public class Main {
 //            System.out.print(nHead.value + "-->");
 //            nHead = nHead.next;
 //        }
-        String str1 = "I love you";
+
+        String str1 = "(a(b(c)d)";
         System.out.println(str1);
+        //System.out.printf(str1.substring(0,2));
         MyStringFunctions test = new MyStringFunctions();
-        String str2 = test.removeExtraSpace(str1);
+        String str2 = test.minRemoveToMakeValid(str1);
         System.out.println(str2);
+
     }
 }

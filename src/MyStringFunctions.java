@@ -82,7 +82,49 @@ public class MyStringFunctions {
         return String.valueOf(array, 0, end - 1);
     }
 
+    // min steps to remove a parentheses
+    public String minRemoveToMakeValid(String s) {
+        // corner case 1 if the string is null
+        if (s == null || s.length() == 0) return "";
 
+        // main logic
+        int left = 0, right = 0;
+        // slow is the one to keep the valid string.
+        int slow = 0, i = 0;
+        //String doesn't have remove
+        char[] array = s.toCharArray();
+
+        while (i < array.length) {
+            if (array[i] == '(') {
+                left++;
+            }
+
+            if (array[i] == ')') {
+                if (left == 0) {
+                    i++;
+                    continue;
+                }
+                left--;
+            }
+            array[slow++] = array[i++];
+        }
+
+        if (left == 0 && right == 0) return String.valueOf(array, 0, slow);
+
+        i = slow - 1;
+        int start = i;
+
+        while (i >= 0) {
+            if (array[i] == '(' && left != 0) {
+                left--;
+                i--;
+                continue;
+            }
+            array[start--] = array[i--];
+        }
+
+        return String.valueOf(array, start + 1, slow - start - 1);
+    }
 
 
 
